@@ -49,6 +49,7 @@ public class HashOpenAddressingDouble implements HashTable {
         int i = 0;
         while (i < M) {
             int pos = (base + i * step) % M;
+            pos = (pos < 0) ? pos + M : pos; // Garante que pos seja sempre positivo
             if (!used[pos]) {
                 used[pos] = true;
                 table[pos] = key;
@@ -70,6 +71,7 @@ public class HashOpenAddressingDouble implements HashTable {
         int i = 0, col = 0;
         while (i < M) {
             int pos = (base + i * step) % M;
+            pos = (pos < 0) ? pos + M : pos; // Garante que pos seja sempre positivo
             if (!used[pos]) {
                 used[pos] = true;
                 table[pos] = key;
@@ -89,6 +91,7 @@ public class HashOpenAddressingDouble implements HashTable {
         int i = 0, col = 0;
         while (i < M) {
             int pos = (base + i * step) % M;
+            pos = (pos < 0) ? pos + M : pos; // Garante que pos seja sempre positivo
             if (!used[pos]) {
                 m.collisionsSearch += col;
                 return false;

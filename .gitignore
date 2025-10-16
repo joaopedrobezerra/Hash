@@ -7,8 +7,7 @@ datasets/
 src/datasets/
 
 # Generated results (serão criados automaticamente)
-resultados.csv
-relatorio_analise.txt
+
 
 # Generated graphics (serão criados automaticamente)
 *.png
