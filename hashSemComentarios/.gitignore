@@ -1,0 +1,14 @@
+# Compiled Java class files
+*.class
+**/*.class
+
+# Generated datasets (serão criados automaticamente)
+datasets/
+src/datasets/
+
+# Generated results (serão criados automaticamente)
+
+
+# Generated graphics (serão criados automaticamente)
+*.png
+*.pdf
