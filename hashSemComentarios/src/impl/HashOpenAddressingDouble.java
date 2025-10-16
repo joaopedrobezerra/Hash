@@ -3,11 +3,11 @@ package impl;
 import core.*;
 
 public class HashOpenAddressingDouble implements HashTable {
-    private int[] table; // Mudado de final para permitir rehashing
-    private boolean[] used; // Mudado de final para permitir rehashing
-    private int M; // Mudado de final para permitir rehashing
-    private int size; // Adicionado contador de elementos
-    private static final double LOAD_FACTOR_THRESHOLD = 0.75; // Fator de carga
+    private int[] table;
+    private boolean[] used;
+    private int M;
+    private int size;
+    private static final double LOAD_FACTOR_THRESHOLD = 0.75;
 
     public HashOpenAddressingDouble(int capacity) {
         this.M = capacity;
@@ -24,7 +24,7 @@ public class HashOpenAddressingDouble implements HashTable {
     private int h1(int x) {
         int v = x % (M - 1);
         v = (v < 0) ? v + (M - 1) : v;
-        return (v == 0) ? 1 : v; // Garante que nunca seja 0
+        return (v == 0) ? 1 : v;
     }
 
     private void rehash() {
@@ -49,7 +49,7 @@ public class HashOpenAddressingDouble implements HashTable {
         int i = 0;
         while (i < M) {
             int pos = (base + i * step) % M;
-            pos = (pos < 0) ? pos + M : pos; // Garante que pos seja sempre positivo
+            pos = (pos < 0) ? pos + M : pos;
             if (!used[pos]) {
                 used[pos] = true;
                 table[pos] = key;
@@ -71,7 +71,7 @@ public class HashOpenAddressingDouble implements HashTable {
         int i = 0, col = 0;
         while (i < M) {
             int pos = (base + i * step) % M;
-            pos = (pos < 0) ? pos + M : pos; // Garante que pos seja sempre positivo
+            pos = (pos < 0) ? pos + M : pos;
             if (!used[pos]) {
                 used[pos] = true;
                 table[pos] = key;
@@ -91,7 +91,7 @@ public class HashOpenAddressingDouble implements HashTable {
         int i = 0, col = 0;
         while (i < M) {
             int pos = (base + i * step) % M;
-            pos = (pos < 0) ? pos + M : pos; // Garante que pos seja sempre positivo
+            pos = (pos < 0) ? pos + M : pos;
             if (!used[pos]) {
                 m.collisionsSearch += col;
                 return false;
@@ -119,7 +119,6 @@ public class HashOpenAddressingDouble implements HashTable {
 
     @Override
     public int[] gapStatsOrNull() {
-        // Mesma implementação do gapStatsOrNull() original
         int occ = 0;
         for (boolean b : used) if (b) occ++;
         if (occ <= 1) return new int[]{M - occ, M - occ, (M - occ) * 1000};

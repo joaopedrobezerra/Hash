@@ -3,35 +3,35 @@ package util;
 import java.io.*;
 
 public class Reporter {
-    private final File file; // Arquivo CSV onde os resultados serão salvos.
+    private final File file;
 
     public Reporter(String csvPath) {
-        this.file = new File(csvPath); // Cria objeto File com o caminho do arquivo CSV.
+        this.file = new File(csvPath);
     }
 
     public void writeHeader() throws IOException {
-        if (!file.exists()) { // Verifica se o arquivo não existe para evitar sobrescrever dados existentes.
-            FileWriter fw = null; // Declara FileWriter.
+        if (!file.exists()) {
+            FileWriter fw = null;
             try {
-                fw = new FileWriter(file); // Cria FileWriter para escrever no arquivo.
-                fw.write("metodo,M,n,insert_ms,search_ms,collisions_insert,collisions_search,top1chain,top2chain,top3chain,gap_min,gap_max,gap_avg\n"); // Escreve o cabeçalho do CSV com todas as colunas.
+                fw = new FileWriter(file);
+                fw.write("metodo,M,n,insert_ms,search_ms,collisions_insert,collisions_search,top1chain,top2chain,top3chain,gap_min,gap_max,gap_avg\n");
             } finally {
-                if (fw != null) { // Se FileWriter foi criado.
-                    fw.close(); // Fecha o arquivo.
+                if (fw != null) {
+                    fw.close();
                 }
             }
         }
     }
 
     public void appendLine(String line) throws IOException {
-        FileWriter fw = null; // Declara FileWriter.
+        FileWriter fw = null;
         try {
-            fw = new FileWriter(file, true); // Cria FileWriter em modo append (adiciona ao final do arquivo).
-            fw.write(line); // Escreve a linha de dados.
-            fw.write("\n"); // Adiciona quebra de linha.
+            fw = new FileWriter(file, true);
+            fw.write(line);
+            fw.write("\n");
         } finally {
-            if (fw != null) { // Se FileWriter foi criado.
-                fw.close(); // Fecha o arquivo.
+            if (fw != null) {
+                fw.close();
             }
         }
     }
