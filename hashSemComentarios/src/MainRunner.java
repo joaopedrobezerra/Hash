@@ -123,6 +123,6 @@ public class MainRunner {
             }
         }
 
-        System.out.println("\n✅ Execução concluída. Resultados salvos em: " + OUT_CSV);
+        System.out.println("\n Execução concluída. Resultados salvos em: " + OUT_CSV);
     }
 }
